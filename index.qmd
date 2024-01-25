@@ -1,0 +1,160 @@
+---
+title: "Pengaruh Tingkat Pengangguran dengan Pola Konsumsi Masyarakat terhadap Ekonomi Negara"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "Pratama Putra Kartia"
+date: 2024-01-24
+number-sections: true
+format:
+  html: default
+  docx: default
+---
+
+![](poltekapp.jpg)
+
+## Pendahuluan
+
+### Latar belakang
+
+Peningkatan dan penurunan tingkat pengangguran dapat memberikan implikasi terhadap perekonomian negara. Tingkat pengangguran mencerminkan kondisi tenaga kerja yang akan mempengaruhi stabilitas ekonomi suatu negara, sedangkan pola konsumsi masyarakat dapat dianggap sebagai indikator dalam mengukur kesehatan ekonomi suatu negara. Oleh karena itu, penelitian ini bertujuan untuk memahami secara lebih baik mengenai hubungan antara tingkat pengangguran dengan pola konsumsi masyarakat. Hubungan ini dapat memberikan wawasan yang diperlukan untuk kebijakan ekonomi yang lebih efektif dan berkelanjutan.
+
+### Ruang lingkup
+
+Penelitian ini berfokus kepada analisis statistik yang menyelidiki hubungan antara tingkat pengangguran dengan pola konsumsi di Indonesia pada tahun 2023. Data yang digunakan berasal dari sumber resmi Badan Pusat Statistik Indonesia.
+
+![](bps.png)
+
+### Rumusan masalah
+
+1. Bagaimana tingkat pengangguran dapat mempengaruhi pola konsumsi masyarakat?
+
+2. Apakah terdapat hubungan yang signifikan antara tingkat pengangguran dengan pola konsumsi masyarakat?
+
+### Tujuan dan manfaat penelitian
+
+Tujuan utama dari penelitian ini adalah untuk mengidentifikai dan menganalisis hubungan antara tingkat pengangguran dengan pola konsumsi masyarakat di Indonesia. 
+
+Melalui analisis ini, diharapkan pembaca dapat menemukan pemahaman yang lebih baik mengenai bagaimana pengangguran dapat mempengaruhi kebiasaan konsumsi. Selain itu, diharapkan analisis ini dapat memberikan landasan bagi kebijakan ekonomi yang responsif terhadap pengangguran, serta mendorong kesadaran akan pentingnya kebijakan kerja dan pelatihan keterampilan untuk merespons perubahan dalam pasar kerja.
+
+### Package
+
+Penelitian ini menggunakan Package antara lain sebagai berikut:
+
+```{r}
+#| warning: false
+#| echo: true
+library("readxl")
+library("tidyverse")
+library("magick")
+library("png")
+library("ggplot2")
+```
+
+## Studi pustaka
+
+Menurut Keynes (1936) pengangguran merupakan akibat dari kurangnya permintaan efektif, dan untuk mengatasinya Keynes menganjurkan adanya campur tangan pemerintah melalui kebijakan fiskal dan kebijakan moneter yang dapat mempengaruhi permintaan.
+
+Arthur Okun (1962) menyatakan bahwa terdapat hubungan negatif antara pengangguran dengan pertumbuhan ekonomi. Satu persen kenaikan pada tingkat pengangguran akan menyebabkan menurunnya pertumbuhan ekonomi sebesar dua persen.
+
+## Metode penelitian
+
+### Data
+
+Penelitian ini menggunakan data yang berasal dari sumber resmi Badan Pusat Statistik Indonesia mengenai tingkat pengangguran dan pola konsumsi masyarakat di Indonesia pada tahun 2023
+
+| Provinsi             | Pengangguran | Konsumsi    |
+|----------------------|--------------|-------------|
+| Aceh                 | 6.03         | 1225976.196 |
+| Sumatera Utara       | 5.89         | 1305339.354 |
+| Sumatera Barat       | 5.94         | 1411823.462 |
+| Riau                 | 4.23         | 1527549.355 |
+| Jambi                | 4.53         | 1424125.4   |
+| Sumatera Selatan     | 4.11         | 1209985.965 |
+| Bengkulu             | 3.42         | 1332558.38  |
+| Lampung              | 4.23         | 1203017.306 |
+| Kep. Bangka Belitung | 4.56         | 1727549.805 |
+| Kep. Riau            | 6.8          | 1989702.534 |
+| DKI Jakarta          | 6.53         | 2791715.754 |
+| Jawa Barat           | 7.44         | 1567666.154 |
+| Jawa Tengah          | 5.13         | 1209906.178 |
+| DI Yogyakarta        | 3.69         | 1731559.933 |
+| Jawa Timur           | 4.88         | 1323486.256 |
+| Banten               | 7.52         | 1743686.861 |
+| Bali                 | 2.69         | 1741522.782 |
+| NTB                  | 2.8          | 1260820.067 |
+| NTT                  | 3.14         | 961372.2258 |
+| Kalimantan Barat     | 5.05         | 1345552.262 |
+| Kalimantan Tengah    | 4.1          | 1525785.005 |
+| Kalimantan Selatan   | 4.31         | 1457344.319 |
+| Kalimantan Timur     | 5.31         | 1980274.864 |
+| Kalimantan Utara     | 4.01         | 1693576.9   |
+| Sulawesi Utara       | 6.1          | 1315176.486 |
+| Sulawesi Tengah      | 2.95         | 1173679.465 |
+| Sulawesi Selatan     | 4.33         | 1252551.242 |
+| Sulawesi Tenggara    | 3.15         | 1172739.179 |
+| Gorontalo            | 3.06         | 1228893.402 |
+| Sulawesi Barat       | 2.27         | 1036520.079 |
+| Maluku               | 6.31         | 1238170.28  |
+| Maluku Utara         | 4.31         | 1317159.419 |
+| Papua Barat          | 5.38         | 1598253.623 |
+| Papua                | 2.67         | 1509992.401 |
+
+### Metode analisis
+
+Pertama, akan dilakukan analisis deskriptif untuk mengevaluasi tingkat pengangguran dan pola konsumsi masyarakat di setiap provinsi di indonesia pada tahun 2023 dengan mencakup statistik deskriptif dan visualisasi data. Selanjutnya, dilakukan analisis regresi untuk memahami hubungan antara tingkat pengangguran dengan pola konsumsi masyarakat. Spesifikasi yang dilakukan adalah:
+
+$$
+y_{t}=\beta_0 + \beta_1 x_t+\mu_t
+$$ di mana $y_t$ adalah Pengangguran dan $x_t$ adalah Konsumsi.
+
+## Pembahasan
+
+### Pembahasan masalah
+
+Peningkatan tingkat pengangguran dapat memberikan dampak pada pola konsumsi masyarakat. Berikut merupakan visualisasi dari hubungan antara tingkat pengangguran dengan pola konsumsi masyarakat.
+
+```{r}
+library("readxl")
+dat<-read_excel("uas.xlsx")
+head(dat)
+library("ggplot2")
+ggplot(data=dat,aes(x=x,y=y)) +
+  geom_point(color="blue",size=2) +
+  labs(title="Hubungan antara Tingkat Pengangguran dan Pola Konsumsi Masyarakat",
+       x="Tingkat Pengangguran",
+       y="Pola Konsumsi Masyarakat",
+       caption = "Sumber: Badan Pusat Statistik") +
+  theme_gray()
+```
+
+Ketika tingkat pengangguran meningkat, hal ini dapat mengurangi pendapatan dan daya beli masyarakat secara keseluruhan. Orang-orang yang menganggur akan cenderung melakukan penghematan, membatasi konsumsi barang dan jasa yang tidak penting, serta memprioritaskan kebutuhan dasar. 
+
+Dengan tingkat pengangguran yang tinggi, masyarakat yang menganggur secara terpaksa harus mengubah pola konsumsi mereka dengan beralih dari barang atau layanan yang lebih mahal ke opsi yang lebih murah, menunda pembelian barang-barang non-esensial, atau bahkan mengurangi konsumsi secara keseluruhan yang akibatnya akan mempengaruhi sektor-sektor usaha tertentu.
+
+Untuk mengurangi tingkat pengangguran, pemerintah dapat menerapkan kebijakan ekonomi berupa insentif fiskal, stimulus, atau program pelatihan untuk mengurangi tingkat pengangguran.
+
+### Analisis masalah
+
+Berikut merupakan hasil regresinya.
+
+```{r}
+reg<-lm(y~x,data=dat)
+summary(reg)
+```
+
+Dari hasil regresi menunjukkan adanya hubungan yang signifikan antara pengangguran dan pola konsumsi masyarakat. Koefisien regresi untuk variabel pengangguran adalah 99767, dengan nilai p-value sebesar 0.015, menunjukkan bahwa variabel pengangguran memiliki dampak yang signifikan terhadap pola konsumsi masyarakat.
+
+## Kesimpulan
+
+Berdasarkan analisis yang telah dilakukan, dapat disimpulkan bahwa terdapat hubungan yang signifikan antara kedua variabel. Masyarakat yang menganggur akan merubah pola konsumsinya bahkan mengurangi konsumsi secara keseluruhan. 
+
+Oleh karena itu, perlu adanya upaya untuk menangani dampak tingkat pengangguran terhadap pola konsumsi masyarakat, diantaranya adalah melalui program pelatihan dan penempatan kerja untuk mengurangi pengangguran, menerapkan stimulus ekonomi untuk mendorong konsumsi, meningkatkan literasi keuangan untuk pengambilan keputusan konsumsi yang bijak, memberikan dukungan pendidikan dan pelatihan lanjutan, merancang kebijakan pemberdayaan ekonomi lokal, dan berkolaborasi dengan industri untuk memastikan keterampilan pekerja sesuai dengan tuntutan pasar.
+
+Langkah-langkah ini diharapkan dapat membantu mengurangi pengangguran, meningkatkan pendapatan, dan akhirnya memperbaiki pola konsumsi masyarakat.
+
+## Referensi
+
+Hasanudin, I. (t.t.). Pengangguran dan Hak-hak Ekonomi di Indonesia. Character Building. Diambil 3 Januari 2024, dari https://binus.ac.id/character-building/2020/05/pengangguran-dan-hak-hak-ekonomi-di-indonesia/
+
+Indonesia, B. P. S. (t.t.-a). Rata Rata Pengeluaran per Kapita Sebulan Untuk Makanan dan Bukan Makanan di Daerah Perkotaan dan Perdesaan Menurut Provinsi (rupiah), 2011-2023—Tabel Statistik. Diambil 3 Januari 2024, dari https://www.bps.go.id/id/statistics-table/1/OTQ1IzE=/rata-rata-pengeluaran-per-kapita-sebulan-untuk-makanan-dan-bukan-makanan-di-daerah-perkotaan-dan-perdesaan-menurut-provinsi--rupiah---2011-2023.html
+
+Indonesia, B. P. S. (t.t.-b). Tingkat Pengangguran Terbuka Menurut Provinsi—Tabel Statistik. Diambil 3 Januari 2024, dari https://www.bps.go.id/id/statistics-table/2/NTQzIzI=/tingkat-pengangguran-terbuka--agustus-2023.html
